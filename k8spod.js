@@ -1,6 +1,5 @@
 //Podsmenu
-ip = '15.206.153.230'
-addr = "http://"+ip+"/cgi-bin/k8s.py?x="
+
 function podmenu(){
     document.getElementById("d1").innerHTML = '<ul><li id="cp" onclick="createpod();"><a href="#">Create Pod</a></li></ul>'
     document.getElementById("d2").innerHTML = '<ul><li id="cp" onclick="deletepod();" ><a href="#">Delete Pod</a></li></ul>'
@@ -40,7 +39,7 @@ function cpod(){
     var imagename = document.getElementById("I2").value
     var cmd = "sudo kubectl run " + podname + " --image=" + imagename
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", addr+ cmd , true);
+    xhr.open("GET", "http://192.168.29.204/cgi-bin/k8s.py?x="+ cmd , true);
     xhr.send();
     xhr.onload = function (){
       var output = xhr.responseText;        
@@ -57,7 +56,7 @@ function dpod(){
     var podname = document.getElementById("I1").value
     var cmd = "sudo kubectl delete pod " + podname
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", addr+ cmd , true);
+    xhr.open("GET", "http://192.168.29.204/cgi-bin/k8s.py?x="+ cmd , true);
     xhr.send();
     xhr.onload = function (){
       var output = xhr.responseText;
@@ -89,7 +88,7 @@ function listpod(){
 function describepods(){
     var cmd = "sudo kubectl describe pods"
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", addr+ cmd , true);
+    xhr.open("GET", "http://192.168.29.204/cgi-bin/k8s.py?x="+ cmd , true);
     xhr.send();
     xhr.onload = function (){
       var output = xhr.responseText;
@@ -107,7 +106,7 @@ function despod(){
     var podname = document.getElementById("I1").value
     var cmd = "sudo kubectl describe pod " + podname
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", addr+ cmd , true);
+    xhr.open("GET", "http://192.168.29.204/cgi-bin/k8s.py?x="+ cmd , true);
     xhr.send();
     xhr.onload = function (){
       var output = xhr.responseText;
